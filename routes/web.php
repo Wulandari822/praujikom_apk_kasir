@@ -20,3 +20,17 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [AdminController::class,'index']);
+Route::get('/users', [AdminController::class,'users']);
+Route::get('/users-add', [AdminController::class,'usersAdd']);
+Route::post('/users-add', [AdminController::class,'usersStore']);
+Route::get('/produk', [AdminController::class,'produk']);
+Route::get('/produk-add', [AdminController::class,'produkAdd']);
+Route::post('/produk-add', [AdminController::class,'produkStore']);
+Route::get('/produk-edit/{id}', [AdminController::class,'produkEdit']);
+Route::put('/produk-edit/{id}', [AdminController::class,'produkUpdate']);
+
+
+
+
+
+

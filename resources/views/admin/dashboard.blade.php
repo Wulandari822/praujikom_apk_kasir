@@ -15,7 +15,7 @@
             </div>
             <div class="col-6 d-flex flex-column justify-content-center align-items-end ">
                 <div class="desc">
-                    Books
+                    Barang
                 </div>
                 <div class="count">
                     
@@ -32,7 +32,7 @@
             </div>
             <div class="col-6 d-flex flex-column justify-content-center align-items-end ">
                 <div class="desc">
-                    Category
+                    Stok
                 </div>
                 <div class="count">
                 
@@ -49,7 +49,7 @@
             </div>
             <div class="col-6 d-flex flex-column justify-content-center align-items-end ">
                 <div class="desc">
-                    User
+                    Petugas
                 </div>
                 <div class="count">
                
@@ -67,13 +67,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>No</th>
-                <th>Username</th>
-                <th>Book Title</th>
-                <th>Rent Date</th>
-                <th>Return Date</th>
-                <th>Actual Return Date</th>
-                <th>Status</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
