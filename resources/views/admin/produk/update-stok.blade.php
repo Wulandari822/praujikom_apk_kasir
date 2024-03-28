@@ -1,19 +1,17 @@
 @extends('layout.main')
 
-@section('title', 'Update Produk')
+@section('title', 'Update Stok')
 
 @section ('content')
-<h1>Update category</h1>
+<h1>Update Stok</h1>
 
-<form action="/produk-edit/{{$produk->id}}" method="post">
+<form action="/produk-stok/{{$stok->id}}" method="post">
     @csrf
     @method('put')
     <label for="NamaProduk" class="form-label">Nama Produk</label>
-    <input type="text" name="NamaProduk" id="NamaProduk" class="form-control w-50" value="{{$produk->NamaProduk}}">
-    <label for="Harga" class="form-label">Harga</label>
-    <input type="text" name="Harga" id="Harga" class="form-control w-50" value="{{$produk->Harga}}">
+    <input type="text" name="NamaProduk" id="NamaProduk" class="form-control w-50" value="{{$stok->NamaProduk}}" readonly>
     <label for="Stok" class="form-label">Stok</label>
-    <input type="text" name="Stok" id="Stok" class="form-control w-50" value="{{$produk->Stok}}" readonly>
+    <input type="text" name="Stok" id="Stok" class="form-control w-50" value="{{$stok->Stok}}">
     <button type="submit" class="btn btn-success mt-3">Update</button>
 </form>
 

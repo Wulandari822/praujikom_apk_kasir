@@ -8,6 +8,8 @@
 
 <form action="/produk-add" method="post">
     @csrf
+    <label for="img" class="form-label">Foto</label>
+    <input type="file" name="img" id="img" class="form-control w-50">
     <label for="NamaProduk" class="form-label">Nama Produk</label>
     <input type="text" name="NamaProduk" id="NamaProduk" class="form-control w-50">
     <label for="Harga" class="form-label">Harga</label>

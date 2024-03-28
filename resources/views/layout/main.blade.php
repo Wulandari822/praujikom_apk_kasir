@@ -26,11 +26,12 @@
         height: 760px;
     }
 
-    .sidebar h4{
+    .sidebar h2{
         text-decoration: none;
         padding: 20px 20px;
         color:#fff;
         display: block;
+        text-align: center;
     }
     .sidebar a{
         text-decoration: none;
@@ -87,12 +88,13 @@
             <div class="row g-0 h-100">
                 <div class="sidebar col-lg-2 p-2  collapse d-lg-block" 
                 id="navbarSupportedContent">
-                    <h4 href=""><i class="bi bi-bag-check-fill"></i> Aplikasi Kasir</h4>
+                    <h2 href=""><i class="bi bi-cart4"></i> </h2>
                     <a href="/dashboard">
-                    <i class="bi bi-house-heart p-2"></i>Dashboard</a>
-                    <a href="/users"><i class="bi bi-person-heart p-2"></i>User</a>  
+                    <i class="bi bi-house p-2"></i>Dashboard</a>
+                    <a href="/pembelian"><i class="bi bi-display p-2"></i></i>Pembelian</a>
+                    <a href="/users"><i class="bi bi-person p-2"></i></i>User</a>  
                     <a href="/produk"><i class="bi bi-box-fill p-2"></i> Produk</a>
-                    <a href=""><i class="bi bi-bag-check-fill p-2"></i> Penjualan</a>
+                    
                 </div>
                 <div class="content col-lg-9 p-5 ">
                     @yield('content')

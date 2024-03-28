@@ -39,6 +39,12 @@ class AdminController extends Controller
        return redirect('users')->with('status', 'User Added Successfully.');
     }
 
+    public function usersDestroy($id){
+        $user = Pelanggan::where('id', $id)->first();
+        $user->delete();
+        return redirect ('users')->with('status', 'User Deleted Successfully');
+    }
+
     public function produk()
     {
         $produks = Produk::all();
@@ -53,17 +59,37 @@ class AdminController extends Controller
 
     public function produkStore(Request $request)
     {
-         //validate data masuk apa engga
-         $validated = $request->validate([
+        // Validate data
+        $validated = $request->validate([
             'NamaProduk' => 'required',
             'Harga' => 'required',
             'Stok' => 'required',
         ]);
+    
+        // Menambahkan "Rp." ke inputan harga sebelum disimpan ke database
+        $harga = 'Rp. ' . $request->Harga ;
 
-       //memasukkan data ke database kita
-       $produks = Produk::create($request->all());
-       return redirect('produk')->with('status', 'Produk Added Successfully.');
+    
+        $newName = '';
+    
+        if($request->file('img')){
+            $extension = $request->file('img')->getClientOriginalExtension();
+            $newName = $request->title.'-'.now()->timestamp.'.'.$extension;
+            $request->file('img')->storeAs('foto', $newName);
+        }
+    
+        $request['foto'] = $newName;
+    
+        $produk = Produk::create([
+            'NamaProduk' =>  $request->NamaProduk,
+            'Harga' =>  $harga,
+            'Stok' =>  $request->Stok,
+            'img' => $newName,
+        ]);
+    
+        return redirect('produk')->with('status', 'Produk Added Successfully.');
     }
+    
     
     public function produkEdit($id){
         $produk = Produk::where('id', $id)->first();
@@ -77,9 +103,46 @@ class AdminController extends Controller
             'Stok' => 'required',
         ]);
 
+        // Menambahkan "Rp." ke inputan harga sebelum disimpan ke database
+        $harga = 'Rp. ' . $request->Harga ;
+
+
         $produk = Produk::where('id', $id)->first();
-        $produk->update($request->all());
-        $produk->id = null;
+        $produk->update([
+            'NamaProduk' => $request->NamaProduk,
+            'Harga' => $harga,
+            'Stok' => $request->Stok,
+        ]);
+        
         return redirect ('produk')->with('status', 'Produk Updated Successfully.');
+    }
+
+    public function produkStokEdit($id)
+    {
+        $stok = Produk::where('id', $id)->first();
+        return view ('admin.produk.update-stok', ['stok' => $stok]);
+    }
+
+
+    public function produkStokUpdate(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'Stok' => 'required',
+        ]);
+
+        $produk = Produk::findOrFail($id);
+        $produk->update(['Stok' => $request->Stok]);
+        return redirect('produk')->with('status', 'Stok Updated Successfully.');
+    }
+
+    public function produkDestroy($id){
+        $produk = Produk::where('id', $id)->first();
+        $produk->delete();
+        return redirect ('produk')->with('status', 'Produk Deleted Successfully');
+    }
+
+    public function pembelian()
+    {
+        return view('admin.pembelian.pembelian');
     }
 }

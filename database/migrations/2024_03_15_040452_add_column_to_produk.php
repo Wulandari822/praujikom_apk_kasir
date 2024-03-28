@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProdukTable extends Migration
+class AddColumnToProduk extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateProdukTable extends Migration
      */
     public function up()
     {
-        Schema::create('produk', function (Blueprint $table) {
-            $table->id();
-            $table->string('NamaProduk', 255);
-            $table->string('Harga', 3);
-            $table->timestamps();
+        Schema::table('produk', function (Blueprint $table) {
+            $table->string('img')->after('id');
         });
-
     }
 
     /**
@@ -29,6 +25,8 @@ class CreateProdukTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produk');
+        Schema::table('produk', function (Blueprint $table) {
+            //
+        });
     }
 }
